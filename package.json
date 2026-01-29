@@ -2,7 +2,8 @@
     "name": "cse340-practice-Stucki",
     "dependencies": {
         "ejs": "^4.0.1",
-        "express": "^5.2.1"
+        "express": "^5.2.1",
+        "ws": "^8.19.0"
     },
     "type": "module",
     "scripts": {
