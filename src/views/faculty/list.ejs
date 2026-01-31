@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<main class="faculty-list">
+  <h1>Faculty Directory</h1>
+
+  <nav class="faculty-sort">
+    <span>Sort by:</span>
+    <a href="/faculty?sort=name">Name</a> |
+    <a href="/faculty?sort=department">Department</a> |
+    <a href="/faculty?sort=title">Title</a>
+  </nav>
+
+  <ul>
+    <% faculty.forEach(person => { %>
+      <li>
+        <h2>
+          <a href="/faculty/<%= person.id %>">
+            <%= person.name %>
+          </a>
+        </h2>
+        <p><strong>Department:</strong> <%= person.department %></p>
+        <p><strong>Title:</strong> <%= person.title %></p>
+      </li>
+    <% }) %>
+  </ul>
+</main>
+
+<%- include('../partials/footer') %>
