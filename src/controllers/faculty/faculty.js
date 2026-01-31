@@ -13,11 +13,12 @@ export const facultyListPage = (req, res) => {
 };
 
 export const facultyDetailPage = (req, res) => {
-  // route param: /faculty/:facultyId
+  // route param: /faculty/:facultyId 
   const facultyId = req.params.facultyId;
   const facultyMember = getFacultyById(facultyId);
 
   if (!facultyMember) {
+    // 404 Statu match with /errors/404.ejs
     return res.status(404).render("errors/404.ejs", {
       title: "Not Found"
     });
