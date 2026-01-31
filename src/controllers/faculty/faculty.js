@@ -18,7 +18,6 @@ export const facultyDetailPage = (req, res) => {
   const facultyMember = getFacultyById(facultyId);
 
   if (!facultyMember) {
-    // IMPORTANT: match whatever your project uses for 404 rendering
     return res.status(404).render("errors/404.ejs", {
       title: "Not Found"
     });
