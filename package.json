@@ -1,8 +1,13 @@
 {
     "name": "cse340-practice-Stucki",
     "dependencies": {
+        "bcrypt": "^6.0.0",
+        "connect-pg-simple": "^10.0.0",
         "ejs": "^4.0.1",
         "express": "^5.2.1",
+        "express-session": "^1.19.0",
+        "express-validator": "^7.3.1",
+        "pg": "^8.18.0",
         "ws": "^8.19.0"
     },
     "type": "module",
