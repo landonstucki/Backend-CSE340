@@ -8,8 +8,7 @@ import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { caCert } from './src/models/db.js';
 import { startSessionCleanup } from './src/utils/session-cleanup.js';
-
-
+import flash from './src/middleware/flash.js';
 /**
  * Server configuration
  */
@@ -46,7 +45,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: NODE_ENV.includes('dev') !== true,
+        secure: NODE_ENV === 'production',
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000
     }
@@ -58,6 +57,9 @@ startSessionCleanup();
 /**
  * Configure Express
  */
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src/views'));
@@ -70,6 +72,9 @@ app.use(express.json());
  * Global Middleware
  */
 app.use(addLocalVariables);
+
+// Flash message middleware (must come after session and global middleware)
+app.use(flash);
 
 /**
  * Routes
