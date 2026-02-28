@@ -25,7 +25,9 @@
             <!-- TODO: Display user.created_at formatted with toLocaleDateString() -->
             <div class="user-detail">
                 <span class="label">Account Created:</span>
-                <span class="value"><%= new Date(user.created_at).toLocaleDateString() %></span>
+                <span class="value"><%= new Date(user.created_at).toLocaleDateString() %></span><br>
+                <span class="label">Role:</span>
+                <span class="value"><%= user.roleName %></span>
             </div>
         </div>
 

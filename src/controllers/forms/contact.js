@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { body, validationResult } from 'express-validator';
+import { validationResult } from 'express-validator';
 import { createContactForm, getAllContactForms } from '../../models/forms/contact.js';
+import { contactValidation } from '../../middleware/validation/forms.js';
 
 const router = Router();
 
@@ -71,20 +72,7 @@ router.get('/', showContactForm);
 /**
  * POST /contact - Handle contact form submission with validation
  */
-router.post('/',
-    [
-        body('subject')
-            .trim()
-            .isLength({ min: 2 })
-            .withMessage('Subject must be at least 2 characters'),
-        body('message')
-            .trim()
-            .isLength({ min: 10 })
-            .withMessage('Message must be at least 10 characters')
-    ],
-    handleContactSubmission
-);
-
+router.post('/', contactValidation, handleContactSubmission);
 /**
  * GET /contact/responses - Display all contact form submissions
  */

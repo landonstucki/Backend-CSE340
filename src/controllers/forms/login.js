@@ -1,23 +1,8 @@
-import { body, validationResult } from 'express-validator';
+import { validationResult } from 'express-validator';
 import { findUserByEmail, verifyPassword } from '../../models/forms/login.js';
 import { Router } from 'express';
-
+import { loginValidation } from '../../middleware/validation/forms.js';
 const router = Router();
-
-/**
- * Validation rules for login form
- */
-const loginValidation = [
-    body('email')
-        .trim()
-        .isEmail()
-        .withMessage('Please provide a valid email address')
-        .normalizeEmail(),
-
-    body('password')
-        .isLength({ min: 8 })
-        .withMessage('Password is required')
-];
 
 /**
  * Display the login form.
